@@ -2,6 +2,7 @@ import React, { useEffect, useRef } from 'react';
 import L from 'leaflet';
 import 'leaflet/dist/leaflet.css'
 import Re from '../../img/marker-icon.png'
+//import Tweet from 'tweet.png'
 
 function Map(props) {
   // create map
@@ -27,11 +28,11 @@ function Map(props) {
     () => {
       console.log(props)
         iconRef.current = L.icon({
-            iconUrl: 'https://leafletjs.com/examples/custom-icons/leaf-green.png',//'https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png',
+            iconUrl: require('./tweet.png'),//'https://leafletjs.com/examples/custom-icons/leaf-green.png',//'https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png',
             iconSize: [38, 95],
             iconAnchor: [22, 94],
             popupAnchor: [-3, -76],
-            shadowUrl: 'https://unpkg.com/leaflet@1.5.1/dist/images/my-icon-shadow.png',
+            //shadowUrl: 'https://unpkg.com/leaflet@1.5.1/dist/images/my-icon-shadow.png',
             shadowSize: [68, 95],
             shadowAnchor: [22, 94]
         });
