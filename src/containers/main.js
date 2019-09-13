@@ -1,6 +1,7 @@
 import React, {Component} from 'react'
 import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
 import axios from 'axios';
+import Home from '../components/home/home'
 import Navbar from '../components/navbar/navbar'
 import Navbar2 from '../components/navbar/navbar2-bk'
 import Form from '../containers/form/form'
@@ -116,7 +117,7 @@ class Main extends Component{
                 <Switch>
                 <Route path='/' exact render={(props) =>
                     <React.Fragment>
-                    <div>Hello world</div>
+                    <Home></Home>
                     </React.Fragment>}/>
 
                 <Route path='/form' render={(props) =>
