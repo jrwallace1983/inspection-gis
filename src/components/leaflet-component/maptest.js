@@ -25,6 +25,7 @@ function Map(props) {
   const stopLayerRef = useRef(null);
   const iconRef = useRef(null);
   const circleRef = useRef(null);
+  const controlRef = useRef(null)
   useEffect(
     () => {
       console.log(props.gisData)
@@ -46,39 +47,47 @@ function Map(props) {
             radius: 10
         });
         if(mapRef.current){
-          //props.gisData.forEach((point)=>{
-          //  L.circle([point.geometry.y, point.geometry.x],
-           //   {color:"blue", fillColor:"blue", fillOpacity:1, radius:30}).addTo(mapRef.current).bindPopup(point.attributes.Station)
-         // })
 
-         // props.gisData.forEach((stop)=>{
-          //  L.marker([stop.geometry.y, stop.geometry.x], {icon:iconRef.current}).addTo(mapRef.current);
-         // });
 
-        }
-        /*if(circleRef.current){
-
-        circleRef.current.addTo(mapRef.current).bindPopup("This is a red circle");
-        }else{
-            circleRef.current.addTo(mapRef.current);
-        }*/
-
-      if (props.gisData.length<1) {
-        console.log("markerref true")//markerRef.current.setLatLng([stops[0].x, stops[0].y]);
-      } else {
+          if (props.gisData.length<1) {
+            } else {
         //let stopLayer
+        if(controlRef.current){
+        mapRef.current.removeControl(controlRef.current)
+      }
+
+        if(stopLayerRef.current){
+          mapRef.current.removeLayer(stopLayerRef.current)
+        }
         const stops = props.gisData.map((stop)=>{
             return L.marker([stop.geometry.y, stop.geometry.x], {icon:iconRef.current}).bindPopup(stop.attributes.Station)//.addTo(mapRef.current);
         });
         console.log(stops)
         stopLayerRef.current = L.layerGroup(stops).addTo(mapRef.current);
-        //markerRef.current = L.marker([props.gisData[0].geometry.x, gisData[0].geometry.y], {icon:iconRef.current}).addTo(mapRef.current);
         var latLngs = [ stops[0].getLatLng() ];
         var markerBounds = L.latLngBounds(latLngs);
         mapRef.current.fitBounds(markerBounds);
-        
-        //mapRef.current.center = [props.gisData[0].geometry.y, props.gisData[0].geometry.x]
+
+        var mbAttr = 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, ' +
+        '<a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
+        'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+      mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
+  
+    var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr}),
+      streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
+
+      var baseLayers = {
+        "Grayscale": grayscale,
+        "Streets": streets
+      };
+
+        let overlays = {
+          "stops": stopLayerRef.current
+        };
+      
+       controlRef.current = L.control.layers(baseLayers, overlays).addTo(mapRef.current);
       }
+    }
     },
     [props.markerPosition, props.gisData]
   );

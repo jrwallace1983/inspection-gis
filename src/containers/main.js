@@ -123,6 +123,7 @@ class Main extends Component{
                 <Route path='/form' render={(props) =>
                 <React.Fragment>
                 <Form2 
+                gisData={this.state.data}
                 metrolineList={this.state.metrolineList}
                 stationList={this.state.stationList}
                 querySet={this.querySet}/>

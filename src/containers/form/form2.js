@@ -1,6 +1,7 @@
 import React, {useState, useEffect} from 'react';
 import Option from './option/option'
 import axios from 'axios';
+import MapTest from '../../components/leaflet-component/maptest'
 
 
 const Form2 = (props)=> {
@@ -36,7 +37,7 @@ const metroLineSelectlist = props.metrolineList.map((metroline,key)=>
 )
 
         return(
-
+            <React.Fragment>
             <form onSubmit={onSubmitHandler}>
                 <div className="form-group">
                     <label className="col-form-label col-form-label-lg">Metroline</label>
@@ -57,6 +58,8 @@ const metroLineSelectlist = props.metrolineList.map((metroline,key)=>
                 </div>
                 
             </form>
+            <MapTest gisData={props.gisData}></MapTest>
+            </React.Fragment>
         )
     
 }
