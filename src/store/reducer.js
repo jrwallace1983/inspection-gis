@@ -1,14 +1,19 @@
+import * as actionTypes from './actions';
+
 const initialState = {
     counter: 0
 }
 
 const reducer = (state = initialState, action) => {
-    if (action.type === 'INCREMENT') {
-        console.log("this is a test")
+    switch(action.type){
+    case actionTypes.INCREMENT_COUNT:
+        console.log(typeof action.value)
         return {
-            counter: state.counter + 1
+            ...state,
+            counter: state.counter + action.value
         }
     }
+    
     return state;
 };
 

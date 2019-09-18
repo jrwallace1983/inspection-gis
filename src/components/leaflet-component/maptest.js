@@ -25,7 +25,9 @@ function Map(props) {
   const stopLayerRef = useRef(null);
   const iconRef = useRef(null);
   const circleRef = useRef(null);
-  const controlRef = useRef(null)
+  const controlRef = useRef(null);
+  const greyLayerRef = useRef(null);
+  const streetsLayerRef = useRef(null);
   useEffect(
     () => {
       console.log(props.gisData)
@@ -53,7 +55,11 @@ function Map(props) {
             } else {
         //let stopLayer
         if(controlRef.current){
-        mapRef.current.removeControl(controlRef.current)
+        mapRef.current.removeControl(controlRef.current);
+        mapRef.current.removeLayer(greyLayerRef.current);
+        mapRef.current.removeLayer(streetsLayerRef.current);
+
+        
       }
 
         if(stopLayerRef.current){
@@ -63,7 +69,8 @@ function Map(props) {
             return L.marker([stop.geometry.y, stop.geometry.x], {icon:iconRef.current}).bindPopup(stop.attributes.Station)//.addTo(mapRef.current);
         });
         console.log(stops)
-        stopLayerRef.current = L.layerGroup(stops).addTo(mapRef.current);
+        stopLayerRef.current = L.layerGroup(stops)
+        stopLayerRef.current.addTo(mapRef.current);
         var latLngs = [ stops[0].getLatLng() ];
         var markerBounds = L.latLngBounds(latLngs);
         mapRef.current.fitBounds(markerBounds);
@@ -73,19 +80,21 @@ function Map(props) {
         'Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
       mbUrl = 'https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token=pk.eyJ1IjoibWFwYm94IiwiYSI6ImNpejY4NXVycTA2emYycXBndHRqcmZ3N3gifQ.rJcFIG214AriISLbB6B5aw';
   
-    var grayscale   = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr}),
-      streets  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
+      greyLayerRef.current   = L.tileLayer(mbUrl, {id: 'mapbox.light', attribution: mbAttr});
+      streetsLayerRef.current  = L.tileLayer(mbUrl, {id: 'mapbox.streets',   attribution: mbAttr});
 
       var baseLayers = {
-        "Grayscale": grayscale,
-        "Streets": streets
+        "Grayscale": greyLayerRef.current,
+        "Streets": streetsLayerRef.current
       };
 
         let overlays = {
           "stops": stopLayerRef.current
         };
       
-       controlRef.current = L.control.layers(baseLayers, overlays).addTo(mapRef.current);
+       controlRef.current = L.control.layers(baseLayers, overlays)
+       controlRef.current.addTo(mapRef.current);
+       console.log(controlRef.current)
       }
     }
     },

@@ -1,6 +1,8 @@
 import React from 'react';
-import Jumbotron from '../jumbotron/jumbotron'
-import {connect} from 'react-redux'
+import Jumbotron from '../jumbotron/jumbotron';
+import Form from '../home/form';
+import {connect} from 'react-redux';
+import * as actionTypes from '../../store/actions'
 
 const Home =(props)=> {
 
@@ -8,7 +10,7 @@ const Home =(props)=> {
 
     return (
         <React.Fragment>
-            <button onClick={props.onIncrementCounter}>click me</button>
+            <Form changeIncrement={props.onIncrementCounter}></Form>
         <Jumbotron>{props.ctr}</Jumbotron>
         </React.Fragment>
     )//}
@@ -16,7 +18,7 @@ const Home =(props)=> {
 
 const mapDispatchProps = dispatch=>{
     return{
-        onIncrementCounter: ()=> dispatch({type: 'INCREMENT'})
+        onIncrementCounter: (value)=> dispatch({type: actionTypes.INCREMENT_COUNT, value})
     };
 };
 const mapStateToProps = state=>{
