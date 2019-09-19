@@ -116,7 +116,7 @@ class Main extends Component{
             <React.Fragment>
                 <Navbar></Navbar>
                 <Switch>
-                <Route path='/' exact render={(props) =>
+                <Route path='/home' exact render={(props) =>
                     <React.Fragment>
                     <Home></Home>
                     </React.Fragment>}/>
