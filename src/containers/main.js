@@ -19,7 +19,7 @@ class Main extends Component{
         fieldList:[],
         metrolineList:["Blue Line", "Expo Line"],
         stationList:["a", "b"],
-        dataUrl:"http://maps.lacity.org/lahub/rest/services/Metro_Bus_and_Rail/MapServer/1/query?",
+        dataUrl:"https://maps.lacity.org/lahub/rest/services/Metro_Bus_and_Rail/MapServer/1/query?",
         markerPosition:[33.8, -117.8]//[49.8419, 24.0315]
             }
 
@@ -38,7 +38,7 @@ class Main extends Component{
             this.setState({data:newList})
         })
         //This is to get field list
-        axios.get("http://maps.lacity.org/lahub/rest/services/Metro_Bus_and_Rail/MapServer/1/?f=pjson")
+        axios.get("https://maps.lacity.org/lahub/rest/services/Metro_Bus_and_Rail/MapServer/1/?f=pjson")
         .then(res=>{
 
             //const fieldList = res.data.fields

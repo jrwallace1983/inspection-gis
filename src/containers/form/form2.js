@@ -8,7 +8,7 @@ const Form2 = (props)=> {
 
     const [metroline, setMetroline] = useState("");
     const [station, setStation] = useState("");
-    const [dataUrl, setDataUrl] = useState("http://maps.lacity.org/lahub/rest/services/Metro_Bus_and_Rail/MapServer/1/query?")
+    const [dataUrl, setDataUrl] = useState("https://maps.lacity.org/lahub/rest/services/Metro_Bus_and_Rail/MapServer/1/query?")
     
 
     const metrolineHandler = (e)=>{
