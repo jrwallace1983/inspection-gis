@@ -17,7 +17,7 @@ class Main extends Component{
         data:[],
         query:"MetroLine = 'Expo Line'",
         fieldList:[],
-        metrolineList:["a", "b"],
+        metrolineList:["Blue Line", "Expo Line"],
         stationList:["a", "b"],
         dataUrl:"http://maps.lacity.org/lahub/rest/services/Metro_Bus_and_Rail/MapServer/1/query?",
         markerPosition:[33.8, -117.8]//[49.8419, 24.0315]
