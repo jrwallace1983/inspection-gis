@@ -12,6 +12,11 @@ const reducer = (state = initialState, action) => {
             ...state,
             counter: state.counter + action.value
         }
+    case actionTypes.DECREMENT_COUNT:
+        return{
+            ...state,
+            counter: state.counter - action.value
+        }
     }
     
     return state;

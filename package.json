@@ -2,9 +2,11 @@
   "name": "inspection-gis",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://github.com/jrwallace1983/inspection-gis",
   "dependencies": {
     "axios": "^0.19.0",
     "bootstrap": "^4.3.1",
+    "gh-pages": "^2.1.1",
     "leaflet": "^1.5.1",
     "react": "^16.8.6",
     "react-bootstrap": "^1.0.0-beta.11",
@@ -16,6 +18,8 @@
     "redux": "^4.0.4"
   },
   "scripts": {
+    "predeploy":"npm run build",
+    "deploy":"gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",

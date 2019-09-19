@@ -10,7 +10,8 @@ const Home =(props)=> {
 
     return (
         <React.Fragment>
-            <Form changeIncrement={props.onIncrementCounter}></Form>
+            <Form changeIncrement={props.onIncrementCounter}
+                    changeDecrement={props.onDecrementCounter}></Form>
         <Jumbotron>{props.ctr}</Jumbotron>
         </React.Fragment>
     )//}
@@ -18,7 +19,8 @@ const Home =(props)=> {
 
 const mapDispatchProps = dispatch=>{
     return{
-        onIncrementCounter: (value)=> dispatch({type: actionTypes.INCREMENT_COUNT, value})
+        onIncrementCounter: (value)=> dispatch({type: actionTypes.INCREMENT_COUNT, value}),
+        onDecrementCounter: (value)=> dispatch({type: actionTypes.DECREMENT_COUNT, value})
     };
 };
 const mapStateToProps = state=>{

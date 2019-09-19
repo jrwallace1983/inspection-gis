@@ -1,5 +1,5 @@
 import React, {Component} from 'react'
-import { BrowserRouter as Router, Route, Switch, Link } from "react-router-dom";
+import { BrowserRouter as Router, Route, Switch, Link, HashRouter } from "react-router-dom";
 import axios from 'axios';
 import Home from '../components/home/home'
 import Navbar from '../components/navbar/navbar'
@@ -111,6 +111,7 @@ class Main extends Component{
     render(){
         console.log("Main Render")
         return(
+
             <Router>
             <React.Fragment>
                 <Navbar></Navbar>
@@ -144,6 +145,7 @@ class Main extends Component{
                 </Switch>
             </React.Fragment>
             </Router>
+
 
         )
     }
