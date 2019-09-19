@@ -1,6 +1,6 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "0ed08256cfa3ee2d8f1af0bc992ff1db",
+    "revision": "3cba9a24de32041773b4e20b214355e0",
     "url": "/inspection-gis/index.html"
   },
   {
@@ -8,7 +8,7 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/inspection-gis/static/css/2.098bc035.chunk.css"
   },
   {
-    "revision": "87911dcfe414357d3d5f",
+    "revision": "92f68b49bf41ebfd9749",
     "url": "/inspection-gis/static/css/main.8961ad78.chunk.css"
   },
   {
@@ -16,8 +16,8 @@ self.__precacheManifest = (self.__precacheManifest || []).concat([
     "url": "/inspection-gis/static/js/2.56f06eaf.chunk.js"
   },
   {
-    "revision": "87911dcfe414357d3d5f",
-    "url": "/inspection-gis/static/js/main.5e29ea31.chunk.js"
+    "revision": "92f68b49bf41ebfd9749",
+    "url": "/inspection-gis/static/js/main.4f9a0a30.chunk.js"
   },
   {
     "revision": "518a50100a71c2c191a0",
