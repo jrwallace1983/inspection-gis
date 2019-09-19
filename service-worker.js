@@ -14,7 +14,7 @@
 importScripts("https://storage.googleapis.com/workbox-cdn/releases/4.3.1/workbox-sw.js");
 
 importScripts(
-  "/inspection-gis/precache-manifest.89b95f99c29e04ce68ea458de940baae.js"
+  "/inspection-gis/precache-manifest.6d06042589304fdab403275057de556a.js"
 );
 
 self.addEventListener('message', (event) => {
