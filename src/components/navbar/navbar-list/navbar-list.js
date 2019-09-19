@@ -2,7 +2,7 @@ import React from 'react'
 import Button from '../../button/button'
 
 const navbarList = (props)=>{
-    const buttonlist = [["Home", ""],["Table","table"], ["Form","form"],
+    const buttonlist = [["Home", "home"],["Table","table"], ["Form","form"],
     ["Map","map"]]
     //const buttonlist = [{map:[{name:"Map"},{url:'wwww.google.com'}]},
     //{table:[{name:"table"},{url:'www.google.com'}]}]
