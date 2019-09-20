@@ -24,6 +24,7 @@ function Map(props) {
   const markerRef = useRef(null);
   const stopLayerRef = useRef(null);
   const iconRef = useRef(null);
+  const tweetRef = useRef(null);
   const circleRef = useRef(null);
   const controlRef = useRef(null);
   const greyLayerRef = useRef(null);
@@ -41,6 +42,15 @@ function Map(props) {
             shadowSize: [68, 95],
             shadowAnchor: [22, 94]
         });
+        tweetRef.current = L.icon({
+          iconUrl: require('./tweet.png'),//'https://leafletjs.com/examples/custom-icons/leaf-green.png',//'https://unpkg.com/leaflet@1.5.1/dist/images/marker-icon.png',
+          iconSize: [20, 30],
+          iconAnchor: [20, 30],
+          popupAnchor: [-3, -76],
+          //shadowUrl: 'https://unpkg.com/leaflet@1.5.1/dist/images/my-icon-shadow.png',
+          shadowSize: [68, 95],
+          shadowAnchor: [22, 94]
+      });
 
         circleRef.current = L.circle([33.8, -117.8], {
             color: 'blue',
@@ -68,10 +78,11 @@ function Map(props) {
         const stops = props.gisData.map((stop)=>{
             return L.marker([stop.geometry.y, stop.geometry.x], {icon:iconRef.current}).bindPopup(stop.attributes.Station)//.addTo(mapRef.current);
         });
+        stops.forEach(stop=>stop.on('click',(e)=>stop.setIcon(tweetRef.current)))
         console.log(stops)
-        stopLayerRef.current = L.layerGroup(stops)
+        stopLayerRef.current = L.featureGroup(stops)//L.layerGroup(stops)
         stopLayerRef.current.addTo(mapRef.current);
-        var latLngs = [ stops[0].getLatLng() ];
+        var latLngs = stopLayerRef.current.getBounds()//[ stopLayerRef.current.getLatLng() ];
         var markerBounds = L.latLngBounds(latLngs);
         mapRef.current.fitBounds(markerBounds);
 
