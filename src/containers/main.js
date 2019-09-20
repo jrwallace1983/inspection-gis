@@ -112,11 +112,11 @@ class Main extends Component{
         console.log("Main Render")
         return(
 
-            <Router>
+            <Router basename='/inspection-gis'>
             <React.Fragment>
                 <Navbar></Navbar>
                 <Switch>
-                <Route path='/' exact render={(props) =>
+                <Route path='/home' exact render={(props) =>
                     <React.Fragment>
                     <Home></Home>
                     </React.Fragment>}/>
