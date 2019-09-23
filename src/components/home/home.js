@@ -6,7 +6,7 @@ import MapImage from './map-image'
 const Home = (props)=>{
     return (
         <div>
-            <MapImage></MapImage>
+test
             
         </div>
     )
