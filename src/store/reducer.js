@@ -1,7 +1,8 @@
 import * as actionTypes from './actions';
 
 const initialState = {
-    counter: 0
+    counter: 0,
+    query:"MetroLine = 'Expo Line'"
 }
 
 const reducer = (state = initialState, action) => {
@@ -16,6 +17,11 @@ const reducer = (state = initialState, action) => {
         return{
             ...state,
             counter: state.counter - action.value
+        }
+    case actionTypes.CHANGE_QUERY:
+        return{
+            ...state,
+            query: action.value
         }
     }
     

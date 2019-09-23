@@ -3,7 +3,6 @@ import { BrowserRouter as Router, Route, Switch, Link, HashRouter } from "react-
 import axios from 'axios';
 import {connect} from 'react-redux';
 import * as actionTypes from '../store/actions'
-import Counter from '../components/counter/counter'
 import Home from '../components/home/home'
 import Navbar from '../components/navbar/navbar'
 import Navbar2 from '../components/navbar/navbar2-bk'
@@ -15,13 +14,10 @@ import MapComponent from '../components/leaflet-component/map-component';
 import MapTest from '../components/leaflet-component/maptest'
 
 class Main extends Component{
-    constructor(props){
-        super(props)
-    }
 
     state = {
         data:[],
-        //query:"MetroLine = 'Expo Line'",
+        query:"MetroLine = 'Expo Line'",
         fieldList:[],
         metrolineList:["Blue Line", "Expo Line"],
         stationList:["a", "b"],
@@ -85,22 +81,21 @@ class Main extends Component{
     }
 
     querySet = (metroline, station)=>{
-        let queryValue='';
+        let query='';
         let operator ='';
         //if (metroline || station === null){operator = 'OR'}
         if (metroline && station){
-            queryValue = `MetroLine = '${metroline}' AND Station = '${station}'`
+            query = `MetroLine = '${metroline}' AND Station = '${station}'`
         }else if(!station){
-            queryValue = `MetroLine = '${metroline}'`
+            query = `MetroLine = '${metroline}'`
         }else if (!metroline){
-            queryValue = `Station = '${station}'`
+            query = `Station = '${station}'`
         }
         
-        this.props.onChangeQuery(queryValue)
-       //this.setState({query:query},()=>{
-           //console.log(this.state.query)
+       this.setState({query:query},()=>{
+           console.log(this.state.query)
 
-        let query = {params:{f:'json', outFields:'*', where: queryValue, returnGeometry: "true",
+        let query = {params:{f:'json', outFields:'*', where: this.state.query, returnGeometry: "true",
         outSR: "4326",
         orderByFields: "MetroLine", returnDistinctValues: false}}
         axios.get(this.state.dataUrl, query)
@@ -112,7 +107,7 @@ class Main extends Component{
             this.setState({data:newList})
         });
 
-       //})
+       })
     }
 
     render(){
@@ -122,16 +117,10 @@ class Main extends Component{
             <Router basename='/inspection-gis'>
             <React.Fragment>
                 <Navbar></Navbar>
-                <div className="container">
                 <Switch>
-                <Route path='/' exact render={(props) =>
+                <Route path='/home' exact render={(props) =>
                     <React.Fragment>
                     <Home></Home>
-                    </React.Fragment>}/>
-
-                <Route path='/counter' render={(props) =>
-                    <React.Fragment>
-                    <Counter></Counter>
                     </React.Fragment>}/>
 
                 <Route path='/form' render={(props) =>
@@ -157,7 +146,6 @@ class Main extends Component{
                 </React.Fragment>}/>
 
                 </Switch>
-                </div>
             </React.Fragment>
             </Router>
 

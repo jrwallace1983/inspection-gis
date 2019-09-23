@@ -3,8 +3,8 @@ import Button from '../../button/button'
 import {Link} from 'react-router-dom'
 
 const navbarList = (props)=>{
-    const buttonlist = [["Home", "home"],["Table","table"], ["Form","form"],
-    ["Map","map"]]
+    const buttonlist = [["Home", ""],["Table","table"], ["Form","form"],
+    ["Map","map"], ["Counter", "counter"]]
     //const buttonlist = [{map:[{name:"Map"},{url:'wwww.google.com'}]},
     //{table:[{name:"table"},{url:'www.google.com'}]}]
 
